@@ -22,7 +22,7 @@ set :application, "taka"
 # subverion, git, mercurial, cvs, bzrなど
 set :scm ,:git
 #gitリポジトリ
-set :repository,  "git@github.com:useiichi/testrails.git"
+set :repository,  "git@github.com:useiichi/taka.git"
 #gitブランチ名
 set :branch, :master
 # どういう方式でデプロイするか
