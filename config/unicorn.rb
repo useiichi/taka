@@ -1,4 +1,4 @@
-application = 'testrails'
+application = 'taka'
 
 worker_processes 2
 working_directory "/var/www/#{application}/current"
