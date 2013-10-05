@@ -14,4 +14,10 @@ class SessionsController < ApplicationController
       render "new"  
     end  
   end
+
+  def destroy
+      session[:user_id] = 0
+      redirect_to :controller => 'messages', :action => 'index' 
+  end
+
 end

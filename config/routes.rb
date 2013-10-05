@@ -1,8 +1,9 @@
 Taka::Application.routes.draw do
   root :to => "messages#index"
-  get "sessions/new"
-  get "sessions/create"
-  post "sessions" => "sessions#create"
+  #get "sessions/new"
+  #get "sessions/create"
+  #post "sessions" => "sessions#create"
+  resources :sessions
   resources :messages
 
   # The priority is based upon order of creation: first created -> highest priority.
