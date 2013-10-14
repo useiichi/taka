@@ -46,7 +46,7 @@ role :db, "www5183ui.sakura.ne.jp", :primary => true
 # Unicorn用に起動/停止タスクを変更
 namespace :deploy do
   task :start, :roles => :app do
-    run "cd #{current_path}; #{sudo} bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D -p 13005"
+    run "cd #{current_path}; #{sudo} bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D -p 13005 --path /taka"
   end
   task :restart, :roles => :app do
     if File.exist? "/tmp/unicorn_#{application}.pid"
