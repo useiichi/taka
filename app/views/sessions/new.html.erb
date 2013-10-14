@@ -1,10 +1,10 @@
 <h1>Log in</h1>  
   
-<%= form_tag('/' + ENV['RAILS_RELATIVE_URL_ROOT'] + '/sessions') do %>  
+<%= form_tag(ENV['RAILS_RELATIVE_URL_ROOT'] + '/sessions') do %>  
   <div class="field">  
     <%= label_tag :password %>  
     <%= password_field_tag :password %>  
   </div>  
-  <p>パスワードはあなたの名前です。ccc</p>
+  <p>パスワードはあなたの名前です。</p>
   <div class="actions"><%= submit_tag "Log in" %></div>  
 <% end %>  
