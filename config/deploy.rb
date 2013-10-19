@@ -49,9 +49,10 @@ namespace :deploy do
     run "cd #{current_path}; #{sudo} bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D -p 13005 --path /taka"
   end
   task :restart, :roles => :app do
-    if File.exist? "/tmp/unicorn_#{application}.pid"
-      run "kill -s USR2 `cat /tmp/unicorn_#{application}.pid`"
-    end
+    #if File.exist? "/var/run/unicorn/unicorn_#{application}.pid"
+      run "#{sudo} kill -s QUIT `cat /var/run/unicorn/unicorn_#{application}.pid`"
+      run "cd #{current_path}; #{sudo} bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D -p 13005 --path /taka"
+    #end
   end
   task :stop, :roles => :app do
     run "#{sudo} kill -s QUIT `cat /var/run/unicorn/unicorn_#{application}.pid`"
