@@ -9,6 +9,10 @@ class MessagesController < ApplicationController
       return
     end
     @messages = Message.all
+    
+    #respond_to do |format|
+      
+    #end
   end
 
   # GET /messages/1
