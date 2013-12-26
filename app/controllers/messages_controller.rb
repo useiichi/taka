@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
-
+#fdsfdsfdsAAAAAAA
   # GET /messages
   # GET /messages.json
   def index
@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
       redirect_to :controller => 'sessions', :action => 'new' 
       return
     end
-    @messages = Message.all
+    @messages = Message.order('id DESC').page(params[:page]).per(10)
     
     #respond_to do |format|
       
@@ -37,10 +37,13 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        #format.html { redirect_to :action => "show", :id => @message.id, notice: 'Message was successfully created.' }
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.mobile { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render action: 'show', status: :created, location: @message }
       else
         format.html { render action: 'new' }
+        format.mobile { render action: 'new' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
@@ -50,11 +53,13 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1.json
   def update
     respond_to do |format|
-      if @message.update(message_params)
+      if if @message.userid == session[:user_id]; @message.update(message_params) else false end
         format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+        format.mobile { redirect_to @message, notice: 'Message was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
+        format.mobile { render action: 'edit' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
@@ -63,9 +68,10 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
-    @message.destroy
+    @message.destroy if @message.userid == session[:user_id]
     respond_to do |format|
       format.html { redirect_to messages_url }
+      format.mobile { redirect_to messages_url }
       format.json { head :no_content }
     end
   end

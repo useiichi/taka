@@ -12,6 +12,8 @@ set :user,          "test"
 # ssh 公開鍵設定
 set :ssh_options, :port=>22, :forward_agent=>false
 ssh_options[:keys] = ["'~/.ssh/id_rsa'"]
+
+#set :password, "******"  # deploy 先のパスワード   (sudo に使います)
 # コマンド実行時にsudoをつけるか
 set :use_sudo, false
 
@@ -59,3 +61,15 @@ namespace :deploy do
   end
 end
 
+
+# assets:precompile
+namespace :assets do
+  task :precompile, :roles => :web do
+    run "cd #{current_path} && #{sudo} RAILS_ENV=production bundle exec rake assets:precompile"
+  end
+  task :cleanup, :roles => :web do
+    run "cd #{current_path} && #{sudo} RAILS_ENV=production bundle exec rake assets:clean"
+  end
+end
+#after :deploy, "assets:precompile"
+before "deploy:restart", "assets:precompile"
