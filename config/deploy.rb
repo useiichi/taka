@@ -1,5 +1,5 @@
 # capistranoの出力がカラーになる
-require 'capistrano_colors'
+#require 'capistrano_colors'
 
 # cap deploy時に自動で bundle install が実行される
 require "bundler/capistrano"

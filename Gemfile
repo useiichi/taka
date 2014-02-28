@@ -1,10 +1,15 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.3'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
+gem 'mysql2', group: :development
+#C:\DevKit-mingw64-32-4.7.2-20140216-1613>gem install mysql2 --platform=ruby -- '
+#--with-mysql-lib="C:\mysql-connector-c-noinstall-6.0.2-win32\lib" --with-mysql-i
+#nclude="C:\mysql-connector-c-noinstall-6.0.2-win32\include"'
+#
+#C:\ruby\Ruby193\binの中にlibmysql.dllを入れ
 gem 'mysql2', group: :production
 
 # Use SCSS for stylesheets
@@ -42,7 +47,8 @@ gem 'execjs', group: :production
 gem 'therubyracer', group: :production
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+#gem 'capistrano', group: :development
+gem 'capistrano', "2.15.5", group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
