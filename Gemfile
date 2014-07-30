@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.3'
 
 # Use sqlite3 as the database for Active Record
-gem 'mysql2', group: :development
-gem 'mysql2', group: :production
+gem 'mysql2'#, group: :development
+#gem 'mysql2', group: :production
 #C:\DevKit-mingw64-32-4.7.2-20140216-1613>gem install mysql2 --platform=ruby -- '
 #--with-mysql-lib="C:\mysql-connector-c-noinstall-6.0.2-win32\lib" --with-mysql-i
 #nclude="C:\mysql-connector-c-noinstall-6.0.2-win32\include"'
