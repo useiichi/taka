@@ -1,75 +1,69 @@
-# capistranoの出力がカラーになる
-#require 'capistrano_colors'
+# config valid only for Capistrano 3.1
+lock '3.2.1'
 
-# cap deploy時に自動で bundle install が実行される
-require "bundler/capistrano"
-set :bundle_flags, "--quiet"
+set :application, 'taka'
+set :repo_url, 'git@github.com:useiichi/taka.git'
 
+# Default branch is :master
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
+# Default deploy_to directory is /var/www/my_app
+# set :deploy_to, '/var/www/my_app'
 
-# sshでログインするユーザ
-set :user,          "test"
-# ssh 公開鍵設定
-set :ssh_options, :port=>22, :forward_agent=>false
-ssh_options[:keys] = ["'~/.ssh/id_rsa'"]
+# Default value for :scm is :git
+# set :scm, :git
 
-#set :password, "******"  # deploy 先のパスワード   (sudo に使います)
-# コマンド実行時にsudoをつけるか
-set :use_sudo, false
+# Default value for :format is :pretty
+# set :format, :pretty
 
+# Default value for :log_level is :debug
+# set :log_level, :debug
 
+# Default value for :pty is false
+# set :pty, true
 
-# アプリケーション名
-set :application, "taka"
-# subverion, git, mercurial, cvs, bzrなど
-set :scm ,:git
-#gitリポジトリ
-set :repository,  "git@github.com:useiichi/taka.git"
-#gitブランチ名
-set :branch, :master
-# どういう方式でデプロイするか
-# copy デプロイ元でソースを最新化してからデプロイ先にコピー
-# checkout デプロイ先に接続した後、scmに応じたcheckoutコマンドを実行する
-set :deploy_via , :copy
-# deploy先ディレクトリ
-set :deploy_to, "/var/www/#{application}"
+# Default value for :linked_files is []
+# set :linked_files, %w{config/database.yml}
 
+# Default value for linked_dirs is []
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-set :rails_env, "production"
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
+# Default value for keep_releases is 5
+# set :keep_releases, 5
 
-
-# デプロイサーバ定義
-role :web, "www5183ui.sakura.ne.jp"
-role :app, "www5183ui.sakura.ne.jp"
-role :db, "www5183ui.sakura.ne.jp", :primary => true
-
-
-# Unicorn用に起動/停止タスクを変更
 namespace :deploy do
-  task :start, :roles => :app do
-    run "cd #{current_path}; #{sudo} bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D -p 13005 --path /taka"
-  end
-  task :restart, :roles => :app do
-    #if File.exist? "/var/run/unicorn/unicorn_#{application}.pid"
-      run "#{sudo} kill -s QUIT `cat /var/run/unicorn/unicorn_#{application}.pid`"
-      run "cd #{current_path}; #{sudo} bundle exec unicorn_rails -c config/unicorn.rb -E #{rails_env} -D -p 13005 --path /taka"
-    #end
-  end
-  task :stop, :roles => :app do
-    run "#{sudo} kill -s QUIT `cat /var/run/unicorn/unicorn_#{application}.pid`"
-  end
-end
 
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
 
-# assets:precompile
-namespace :assets do
-  task :precompile, :roles => :web do
-    run "cd #{current_path} && #{sudo} RAILS_ENV=production bundle exec rake assets:precompile"
+	desc "Check that we can access everything"
+	task :check_write_permissions do
+	  on roles(:all) do |host|
+	    if test("[ -w #{fetch(:deploy_to)} ]")
+	      info "#{fetch(:deploy_to)} is writable on #{host}"
+	    else
+	      error "#{fetch(:deploy_to)} is not writable on #{host}"
+	    end
+	  end
+	end
+
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
   end
-  task :cleanup, :roles => :web do
-    run "cd #{current_path} && #{sudo} RAILS_ENV=production bundle exec rake assets:clean"
-  end
+
 end
-#after :deploy, "assets:precompile"
-before "deploy:restart", "assets:precompile"
