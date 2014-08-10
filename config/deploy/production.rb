@@ -7,9 +7,12 @@
 set :rails_env, 'production'
 
 
-role :app, %w{test@www5183ui.sakura.ne.jp}
-role :web, %w{test@www5183ui.sakura.ne.jp}
-role :db,  %w{test@www5183ui.sakura.ne.jp}
+#role :app, %w{test@www5183ui.sakura.ne.jp}
+#role :web, %w{test@www5183ui.sakura.ne.jp}
+#role :db,  %w{test@www5183ui.sakura.ne.jp}
+role :app, %w{root@ruby}
+role :web, %w{root@ruby}
+role :db,  %w{root@ruby}
 
 
 # Extended Server Syntax
@@ -18,7 +21,8 @@ role :db,  %w{test@www5183ui.sakura.ne.jp}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'www5183ui.sakura.ne.jp', user: 'test', roles: [:web]
+#server 'www5183ui.sakura.ne.jp', user: 'test', roles: [:web]
+server 'ruby', user: 'root', roles: [:web]
 
 
 # Custom SSH Options

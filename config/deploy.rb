@@ -3,6 +3,7 @@ lock '3.2.1'
 
 set :application, 'taka'
 set :repo_url, 'git@github.com:useiichi/taka.git'
+set :branch, 'cap3'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
