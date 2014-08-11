@@ -35,4 +35,4 @@ production:
   pool: 5
   username: uuu
   password: oohana
-  host: localhost
+  host: sql
