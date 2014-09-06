@@ -10,7 +10,7 @@ gem 'mysql2'#, group: :development
 #--with-mysql-lib="C:\mysql-connector-c-noinstall-6.0.2-win32\lib" --with-mysql-i
 #nclude="C:\mysql-connector-c-noinstall-6.0.2-win32\include"'
 #
-#C:\ruby\Ruby193\binの中にlibmysql.dllを入れ
+#C:\ruby\Ruby193\bin縺ｮ荳ｭ縺ｫlibmysql.dll繧貞�･繧�
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -42,9 +42,9 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-gem 'unicorn', group: :production
-gem 'execjs', group: :production
-gem 'therubyracer', group: :production
+gem 'unicorn', group: {:production, :test}
+gem 'execjs', group: {:production, :test}
+gem 'therubyracer', group: {:production, :test}
 
 # Use Capistrano for deployment
 #gem 'capistrano', group: :development
