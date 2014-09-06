@@ -7,12 +7,12 @@
 set :rails_env, 'production'
 
 
-#role :app, %w{test@www5183ui.sakura.ne.jp}
-#role :web, %w{test@www5183ui.sakura.ne.jp}
-#role :db,  %w{test@www5183ui.sakura.ne.jp}
-role :app, %w{root@ruby}
-role :web, %w{root@ruby}
-role :db,  %w{root@ruby}
+role :app, %w{root@www5183ui.sakura.ne.jp}
+role :web, %w{root@www5183ui.sakura.ne.jp}
+role :db,  %w{root@www5183ui.sakura.ne.jp}
+#role :app, %w{root@ruby}
+#role :web, %w{root@ruby}
+#role :db,  %w{root@ruby}
 
 
 # Extended Server Syntax
@@ -21,8 +21,8 @@ role :db,  %w{root@ruby}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-#server 'www5183ui.sakura.ne.jp', user: 'test', roles: [:web]
-server 'ruby', user: 'root', roles: [:web]
+server 'www5183ui.sakura.ne.jp', user: 'root', roles: [:web]
+#server 'ruby', user: 'root', roles: [:web]
 
 
 # Custom SSH Options
@@ -32,6 +32,9 @@ server 'ruby', user: 'root', roles: [:web]
 #
 # Global options
 # --------------
+set :ssh_options, {
+    port: 23
+}
 #  set :ssh_options, {
 #    keys: %w(/home/rlisowski/.ssh/id_rsa),
 #    forward_agent: false,
