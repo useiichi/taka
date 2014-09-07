@@ -22,11 +22,11 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: testrails_test
+  database: taka
   pool: 5
   username: uuu
   password: oohana
-  host: localhost
+  host: sql
 
 production:
   adapter: mysql2
