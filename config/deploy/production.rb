@@ -7,12 +7,12 @@
 set :rails_env, 'production'
 
 
-role :app, %w{root@www5183ui.sakura.ne.jp}
-role :web, %w{root@www5183ui.sakura.ne.jp}
-role :db,  %w{root@www5183ui.sakura.ne.jp}
-#role :app, %w{root@ruby}
-#role :web, %w{root@ruby}
-#role :db,  %w{root@ruby}
+#role :app, %w{root@www5183ui.sakura.ne.jp}
+#role :web, %w{root@www5183ui.sakura.ne.jp}
+#role :db,  %w{root@www5183ui.sakura.ne.jp}
+role :app, %w{root@unicorn}
+role :web, %w{root@unicorn}
+role :db,  %w{root@unicorn}
 
 
 # Extended Server Syntax
@@ -21,8 +21,8 @@ role :db,  %w{root@www5183ui.sakura.ne.jp}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'www5183ui.sakura.ne.jp', user: 'root', roles: [:web]
-#server 'ruby', user: 'root', roles: [:web]
+#server 'www5183ui.sakura.ne.jp', user: 'root', roles: [:web]
+server 'unicorn', user: 'root', roles: [:web]
 
 
 # Custom SSH Options
@@ -33,7 +33,7 @@ server 'www5183ui.sakura.ne.jp', user: 'root', roles: [:web]
 # Global options
 # --------------
 set :ssh_options, {
-    port: 23
+    port: 22
 }
 #  set :ssh_options, {
 #    keys: %w(/home/rlisowski/.ssh/id_rsa),
