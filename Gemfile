@@ -47,8 +47,8 @@ gem 'execjs', group: [:production, :test]
 gem 'therubyracer', group: [:production, :test]
 
 # Use Capistrano for deployment
-#gem 'capistrano', group: :development
-gem 'capistrano', group: :development
+#gem 'capistrano', '3.2.1', group: :development
+gem 'capistrano', '3.2.1', group: :development
 gem 'capistrano-rails', group: :development
 
 # Use debugger
