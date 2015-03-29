@@ -57,3 +57,4 @@ gem 'capistrano-rails', group: :development
 gem 'mobylette'
 gem 'kaminari'
 
+

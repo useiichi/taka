@@ -67,4 +67,10 @@ namespace :deploy do
     end
   end
 
+  task :beforedeploy do
+    on roles(:all) do
+      execute "bundle config build.nokogiri --use-system-libraries"
+    end
+  end
+
 end
