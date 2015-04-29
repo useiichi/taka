@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:password] == "sayuki"
+    if params[:password] == "ayu"
       session[:user_id] = 1
       redirect_to :controller => 'messages', :action => 'index' 
     elsif params[:password] == "ume"
