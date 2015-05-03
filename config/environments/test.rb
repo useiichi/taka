@@ -1,4 +1,4 @@
-Taka::Application.configure do
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
@@ -10,34 +10,15 @@ Taka::Application.configure do
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
   # preloads Rails for running tests, you may have to set it to true.
-  #config.eager_load = false
-  config.eager_load = true
+  config.eager_load = false
+
+  # Configure static file server for tests with Cache-Control for performance.
+  config.serve_static_files   = true
+  config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
-  #config.consider_all_requests_local       = true
-  #config.action_controller.perform_caching = false
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
-
-
-  # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = false
-  #config.static_cache_control = "public, max-age=3600"
-
-
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
-
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
-
-  # Generate digests for assets URLs.
-  config.assets.digest = true
-
-  # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.0'
-
+  config.consider_all_requests_local       = true
+  config.action_controller.perform_caching = false
 
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
@@ -50,6 +31,12 @@ Taka::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  # Randomize the order test cases are executed.
+  config.active_support.test_order = :random
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Raises error for missing translations
+  # config.action_view.raise_on_missing_translations = true
 end

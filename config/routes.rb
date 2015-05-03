@@ -1,11 +1,4 @@
-Taka::Application.routes.draw do
-  root :to => "messages#index"
-  #get "sessions/new"
-  #get "sessions/create"
-  #post "sessions" => "sessions#create"
-  resources :sessions
-  resources :messages
-
+Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -46,7 +39,7 @@ Taka::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
