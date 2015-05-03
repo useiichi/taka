@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<!--p>
   <strong>Userid:</strong>
   <%= @message.userid %>
-</p>
+</p-->
 
 <p>
-  <strong>Body:</strong>
-  <%= @message.body %>
+  <strong>メッセージ:</strong>
+  <%= simple_format(h(@message.body)) %>
 </p>
 
 <%= link_to 'Edit', edit_message_path(@message) %> |
