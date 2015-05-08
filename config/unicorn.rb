@@ -1,7 +1,7 @@
 application = 'taka'
 
 worker_processes 2
-working_directory "/var/www/#{application}/current"
+working_directory "/var/www/#{application}"
 
 listen "/var/run/unicorn/unicorn_#{application}.sock"   # Unix Domain Socket
 

@@ -48,3 +48,12 @@ group :development, :test do
   gem 'spring'
 end
 
+#gem 'debug_inspector'
+#gem 'binding_of_caller'
+#gem 'columnize'
+#gem 'byebug'
+#gem 'spring'
+#gem 'web-console'
+
+gem 'god', group: :production
+
