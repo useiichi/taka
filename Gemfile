@@ -55,5 +55,5 @@ end
 #gem 'spring'
 #gem 'web-console'
 
-gem 'god', group: :production
+gem 'foreman', group: :production
 
