@@ -1,1 +1,1 @@
-web: bundle exec unicorn_rails -c /var/www/taka/config/unicorn.rb -E production -p 13005 --path /taka
+web: RAILS_ENV=production bundle exec puma -C /var/www/taka/config/puma.rb -p 13005
