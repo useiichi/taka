@@ -1,1 +1,0 @@
-web: RAILS_ENV=production bundle exec puma -C /var/www/taka/config/puma.rb -p 13005
