@@ -27,7 +27,11 @@
 #
 # The default is "development".
 #
-environment 'production'
+if ENV['RAILS_ENV'] != 'production'
+    environment 'development'
+else
+    environment 'production'
+end
 
 # Daemonize the server into the background. Highly suggest that
 # this be combined with "pidfile" and "stdout_redirect".
