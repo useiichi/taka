@@ -76,7 +76,7 @@ end
 # The default is "tcp://0.0.0.0:9292".
 #
 # bind 'tcp://0.0.0.0:9292'
-bind 'unix:///var/run/puma.sock'
+# bind 'unix:///var/run/puma.sock'
 # bind 'unix:///var/run/puma.sock?umask=0111'
 # bind 'ssl://127.0.0.1:9292?key=path_to_key&cert=path_to_cert'
 
@@ -180,7 +180,7 @@ bind 'unix:///var/run/puma.sock'
 #preload_app!
 
 #rackup      DefaultRackup
-#port        ENV['PORT']     || 13005
+port        3001
 #environment 'production'
 
 #on_worker_boot do

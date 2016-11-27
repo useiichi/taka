@@ -11,7 +11,7 @@ default: &default
   pool: 5
   username: uuu
   password: oohana
-  host: sql
+  host: wordpress-mysql.default.svc.cluster.local
   timeout: 5000
 
 development:
