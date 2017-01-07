@@ -20,7 +20,7 @@
 <% @messages.each do |message| %>
   <tr>
     <!--td><%= message.userid %></td-->
-    	<% case message.userid
+    	<% case message.userid % 2
 			when 1 then %>
 	<td style="vertical-align: top; width: 5px">
    		<p><%= image_tag 'ineko3b.gif' %></p>
@@ -28,7 +28,7 @@
     <td style="vertical-align: top; color: #FF69B4">
 		<%= simple_format(h(message.body)) %>
     </td>
-    	<% when 2 then %>
+    	<% when 0 then %>
 	<td style="vertical-align: top">
    		<p><%= image_tag 'iuki1d.gif' %></p>
    	</td>

@@ -28,8 +28,7 @@
 <body>
 
 <div id="user_nav">
-  <% if session[:user_id] != 1 and session[:user_id] != 2 %>
-  <% else %>
+  <% if session[:user_id] != 0 %>
     <%= link_to 'ログアウト', session_path(1), :method => :delete %>
   <% end %>
 </div>

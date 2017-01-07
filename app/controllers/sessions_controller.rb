@@ -3,20 +3,27 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:password] == "tsukasa"
+    if params[:password] == "sss"
       session[:user_id] = 1
-      redirect_to :controller => 'messages', :action => 'index' 
-    elsif params[:password] == "ume"
-      session[:user_id] = 2   
-      redirect_to :controller => 'messages', :action => 'index' 
-    elsif 
-      flash.now.alert = "Invalid email or password"  
-      render "new"  
-    end  
+      redirect_to :controller => 'messages', :action => 'index'
+    elsif params[:password] == "uuu"
+      session[:user_id] = 2
+      redirect_to :controller => 'messages', :action => 'index'
+    elsif params[:password] == "aaa"
+      session[:user_id] = 3
+      redirect_to :controller => 'messages', :action => 'index'
+    elsif params[:password] == "uuuaaa"
+      session[:user_id] = 4
+      redirect_to :controller => 'messages', :action => 'index'
+    elsif
+      session[:user_id] = 0
+      flash.now.alert = "Invalid email or password"
+      render "new"
+    end
   end
 
   def destroy
       session[:user_id] = 0
-      redirect_to :controller => 'messages', :action => 'index' 
+      redirect_to :controller => 'messages', :action => 'index'
   end
 end

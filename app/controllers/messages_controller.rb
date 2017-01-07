@@ -4,11 +4,18 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    if session[:user_id] != 1 and session[:user_id] != 2
+    if session[:user_id] == 0
       redirect_to :controller => 'sessions', :action => 'new'
       return
     end
-    @messages = Message.order('id DESC').page(params[:page]).per(10)
+    if session[:user_id] % 2 == 1
+      her_id = session[:user_id]
+      my_id = session[:user_id] + 1
+    else
+      her_id = session[:user_id] - 1
+      my_id = session[:user_id]
+    end
+    @messages = Message.where(userid: her_id).or(Message.where(userid: my_id)).order('id DESC').page(params[:page]).per(10)
 
     #respond_to do |format|
 
