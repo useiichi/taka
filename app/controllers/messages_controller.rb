@@ -1,21 +1,30 @@
 class MessagesController < ApplicationController
+  before_action :my_authenticate, only: [:show, :new, :edit, :create, :update, :destroy]
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+
+  def my_authenticate
+    if session[:user_id].nil?
+      redirect_to root_path
+    end
+  end
 
   # GET /messages
   # GET /messages.json
   def index
     if session[:user_id].nil?
-      redirect_to :controller => 'sessions', :action => 'new'
-      return
-    elsif session[:user_id] % 2 == 1
-      her_id = session[:user_id]
-      my_id = session[:user_id] + 1
+      #redirect_to :controller => 'sessions', :action => 'new'
+      #return
+      render template: "sessions/new"
     else
-      her_id = session[:user_id] - 1
-      my_id = session[:user_id]
+      if session[:user_id] % 2 == 1
+        her_id = session[:user_id]
+        my_id = session[:user_id] + 1
+      else
+        her_id = session[:user_id] - 1
+        my_id = session[:user_id]
+      end
+      @messages = Message.where(userid: her_id).or(Message.where(userid: my_id)).order('id DESC').page(params[:page]).per(10)
     end
-    @messages = Message.where(userid: her_id).or(Message.where(userid: my_id)).order('id DESC').page(params[:page]).per(10)
-
     #respond_to do |format|
 
     #end
@@ -86,6 +95,9 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
+      if @message.userid != session[:user_id]
+        @message = nil
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

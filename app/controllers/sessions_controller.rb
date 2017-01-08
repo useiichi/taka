@@ -26,6 +26,7 @@ class SessionsController < ApplicationController
   def destroy
       #session[:user_id] = nil
       session.delete(:user_id)
-      redirect_to :controller => 'messages', :action => 'index'
+      #redirect_to :controller => 'messages', :action => 'index'
+      redirect_to root_path
   end
 end
