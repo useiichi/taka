@@ -15,15 +15,17 @@ class SessionsController < ApplicationController
     elsif params[:password] == "uuuaaa"
       session[:user_id] = 4
       redirect_to :controller => 'messages', :action => 'index'
-    elsif
-      session[:user_id] = 0
+    else
+      #session[:user_id] = nil
+      session.delete(:user_id)
       flash.now.alert = "Invalid email or password"
       render "new"
     end
   end
 
   def destroy
-      session[:user_id] = 0
+      #session[:user_id] = nil
+      session.delete(:user_id)
       redirect_to :controller => 'messages', :action => 'index'
   end
 end

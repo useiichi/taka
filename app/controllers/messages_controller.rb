@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    if session[:user_id] == 0 or session[:user_id].nil?
+    if session[:user_id].nil?
       redirect_to :controller => 'sessions', :action => 'new'
       return
     elsif session[:user_id] % 2 == 1
