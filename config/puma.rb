@@ -11,7 +11,7 @@ threads threads_count, threads_count
 #
 port        ENV.fetch("PORT") { 3000 }
 
-bind 'unix:///var/run/puma-taka.sock'
+# bind 'unix:///var/run/puma-taka.sock'
 
 # Specifies the `environment` that Puma will run in.
 #
