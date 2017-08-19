@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Taka</title>
+    <title>Room</title>
     <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).bind("mobileinit", function(){
+		  $.mobile.ajaxEnabled = false;
+		  $.mobile.pushStateEnabled = false;
+		});
+	</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+
+<div id="user_nav">
+  <% if not session[:user_id].nil? %>
+    <%= link_to 'ログアウト', session_path(1), :method => :delete %>
+  <% end %>
+</div>
+
     <%= yield %>
   </body>
 </html>

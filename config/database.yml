@@ -13,20 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  host: localhost
+  username: <%= Rails.application.secrets[:mysql_username] %>
+  password: <%= Rails.application.secrets[:mysql_password] %>
+  host: wordpress-mysql.default.svc.cluster.local
 
 development:
   <<: *default
-  database: taka_development
+  database: taka
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: taka_test
+  database: taka
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +49,4 @@ test:
 #
 production:
   <<: *default
-  database: taka_production
-  username: taka
-  password: <%= ENV['TAKA_DATABASE_PASSWORD'] %>
+  database: taka
