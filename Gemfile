@@ -34,7 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'kaminari'
-gem 'jquery-rails' 
+gem 'jquery-rails'
+gem 'jquery-ujs'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
 group :development, :test do
