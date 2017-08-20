@@ -5,18 +5,10 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).bind("mobileinit", function(){
-		  $.mobile.ajaxEnabled = false;
-		  $.mobile.pushStateEnabled = false;
-		});
-	</script>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <%= javascript_include_tag 'application' %>
   </head>
@@ -25,7 +17,7 @@
 
 <div id="user_nav">
   <% if not session[:user_id].nil? %>
-    <%= link_to 'ログアウト', session_path(1), :method => :delete %>
+    <%= link_to '~C~B~B~B~C~H', session_path(1), :method => :delete %>
   <% end %>
 </div>
 
