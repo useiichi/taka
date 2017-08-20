@@ -2,11 +2,11 @@
 <h2>Log in</h2>
 </div>
   
-<%= form_tag( :controller => "sessions", :action => "create", class: 'form-group' ) do %>  
+<%= form_tag( :controller => "sessions", :action => "create", html: {class: 'form-group'} ) do %>  
   <div class="form-group row">  
-    <%= label_tag :password, class:'col-1 col-form-label' %>  
-    <%= password_field_tag :password, class:'form-control' %>  
+    <%= label_tag :password, html: {class: 'col-1 col-form-label'} %>  
+    <%= password_field_tag :password, html: {class: 'form-control'} %>  
   </div>  
   <p>パスワードはあなたの名前です。</p>
-  <div class="actions"><%= submit_tag "Log in", class:'btn btn-primary' %></div>  
+  <div class="actions"><%= submit_tag "Log in" %></div>  
 <% end %>
