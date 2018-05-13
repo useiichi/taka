@@ -21,4 +21,9 @@
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
 
+/vendor/bundle
+/vendor/assets
+/public/assets
+
 bundle-root/.bundle/cache
+bundle-root/.bash_history
