@@ -16,7 +16,7 @@ port        ENV.fetch("PORT") { 3000 }
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 #if "production" == ENV.fetch("RAILS_ENV") { "development" }
-ssl_bind '0.0.0.0', '3000', {
+ssl_bind '0.0.0.0', '3443', {
     key: "/etc/kubernetes/ssl/worker-key.pem",
     cert: "/etc/kubernetes/ssl/worker.pem",
     ca: "/etc/kubernetes/ssl/ca.pem",
