@@ -7,14 +7,14 @@
 #   gem 'mysql2'
 #
 # And be sure to use new-style password hashing:
-#   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
+#   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= Rails.application.secrets[:mysql_username] %>
-  password: <%= Rails.application.secrets[:mysql_password] %>
+  username: <%= Rails.application.credentials.db[:mysql_username] %>
+  password: <%= Rails.application.credentials.db[:mysql_password] %>
   host: wordpress-mysql.default.svc.cluster.local
 
 development:

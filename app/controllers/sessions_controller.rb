@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
     if params[:password] == "sakura"
       session[:user_id] = 1
       redirect_to :controller => 'messages', :action => 'index'
-    elsif params[:password] == "umesei"
+    elsif params[:password] == "uuusakura"
       session[:user_id] = 2
       redirect_to :controller => 'messages', :action => 'index'
-    elsif params[:password] == "aaa"
+    elsif params[:password] == "asunapppppp"
       session[:user_id] = 3
       redirect_to :controller => 'messages', :action => 'index'
-    elsif params[:password] == "uuuaaa"
+    elsif params[:password] == "uuuasuna"
       session[:user_id] = 4
       redirect_to :controller => 'messages', :action => 'index'
     else
