@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= Rails.application.credentials.db[:mysql_username] %>
   password: <%= Rails.application.credentials.db[:mysql_password] %>
-  host: wordpress-mysql.default.svc.cluster.local
+  host: mariadb-svc.default.svc.cluster.local
 
 development:
   <<: *default
