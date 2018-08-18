@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= Rails.application.credentials.db[:mysql_username] %>
-  password: <%= Rails.application.credentials.db[:mysql_password] %>
+  username: <%= Rails.application.credentials.mysql_username %>
+  password: <%= Rails.application.credentials.mysql_password %>
   host: mariadb-svc.default.svc.cluster.local
 
 development:
