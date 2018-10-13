@@ -15,7 +15,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= Rails.application.credentials.mysql_username %>
   password: <%= Rails.application.credentials.mysql_password %>
-  host: mariadb-svc.default.svc.cluster.local
+  host: proxysql-svc.default.svc.cluster.local
+  port: 6033
 
 development:
   <<: *default
